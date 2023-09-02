@@ -1,30 +1,24 @@
-class Stack {
-  constructor() {
-    this.top = -1;
-    this.items = {};
-  }
-
-  getTop() {
-    return this.items[this.top];
-  }
-
-  add(value) {
-    this.top += 1;
-    this.items[this.top] = value;
-  }
-
-  pop() {
-    const valueToPop = this.items[this.top];
-    delete this.items[this.top];
-    this.top -= 1;
-    return valueToPop;
-  }
-}
+const { Stack } = require("./index");
 
 describe('Javascript Stack', () => {
-  it.todo('Should created Empty');
+  let stack;
+  beforeAll(() => {
+    stack = new Stack();
+  })
+  it('Should created Empty', () => {
+    expect(stack.top).toBe(-1);
+    expect(stack.items).toEqual({});
+  });
 
-  it.todo('Can push to the top');
+  it('Can push to the top', () => {
+    stack.push(20);
+    expect(stack.top).toBe(0);
+    expect(stack.peek()).toBe(20);
+  });
 
-  it.todo('can pop value from the top');
+  it('Can pop value from the top', () => {
+    expect(stack.pop()).toBe(20);
+    expect(stack.items).toEqual({});
+    expect(stack.top).toBe(-1);
+  });
 });
